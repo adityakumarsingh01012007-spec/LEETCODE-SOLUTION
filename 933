@@ -1,20 +1,22 @@
 
-class RecentCounter {
-private:
-    queue<int> q;
 
-public:
-    RecentCounter() {
-        
+import java.util.*;
+
+class RecentCounter {
+
+    Queue<Integer> queue;
+
+    public RecentCounter() {
+        queue = new LinkedList<>();
     }
 
-    int ping(int t) {
-        q.push(t);
+    public int ping(int t) {
+        queue.add(t);
 
-        while (q.front() < t - 3000) {
-            q.pop();
+        while (queue.peek() < t - 3000) {
+            queue.poll();
         }
 
-        return q.size();
+        return queue.size();
     }
-};
+}
